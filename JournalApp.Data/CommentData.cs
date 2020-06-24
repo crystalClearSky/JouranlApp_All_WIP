@@ -29,6 +29,9 @@ namespace JournalApp.Data
             return comments.FirstOrDefault(c => c.CommentId == id);
         }
 
-        
+        public Comment GetByType(Comment data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

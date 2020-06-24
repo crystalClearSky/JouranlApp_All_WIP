@@ -10,6 +10,6 @@ namespace JournalApp.Data
     {
         IEnumerable<TData> GetAll(); // Get all of any data
         TData GetById(int id);
-        
+        TData GetByType(TData data);
     }
 }

@@ -2,6 +2,8 @@ using JournalApp.Core;
 using JournalApp.Data;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace JournalApp.Test
 {
@@ -31,6 +33,7 @@ namespace JournalApp.Test
             Tag tag = new Tag();
             tag.TagText = "progress";
             var journals = uu.GetByTag(tag);
+            
             foreach (var journal in journals)
             {
                 Console.WriteLine($"{journal.Title}");
@@ -51,6 +54,50 @@ namespace JournalApp.Test
                 Console.WriteLine($"{journal.Title}");
             }
 
+        }
+        [Test]
+        public void GetAllJournals_Test()
+        {
+            IDataRepository<Journal> retrieveJournals = new JournalData();
+            
+            var journals = retrieveJournals.GetAll();
+            foreach (var journal in journals)
+            {
+                Console.WriteLine(journal.Title);
+            }
+        }
+        [Test]
+        public void AddTagToJournal_Test()
+        {
+            Tag tag = new Tag();
+            IDataRepository<Journal> retrieveData = new JournalData();
+            ITag<Journal> itag = new JournalData();
+            var journal = retrieveData.GetById(1);
+            tag.TagText = "#Play"; 
+            journal.Tags.Add(tag); // Adds a tag without # or @ checks
+            itag.AddTag("#Test",journal);
+            foreach (var item in journal.Tags)
+            {
+                Console.WriteLine(item.TagText);
+            }
+        }
+        [Test]
+        public void AddUserToJournal_Test()
+        {
+            IDataRepository<Journal> retrieveJournal = new JournalData();
+            ITag<Journal> itag = new JournalData();
+            var journal = retrieveJournal.GetById(1);
+            itag.AddTag("@john", journal);
+
+            foreach (var user in journal.Tags)
+            {
+                Console.WriteLine(user.UserTag.FirstName);
+            }
+            Console.WriteLine("*****");
+            foreach (var tag in journal.Tags)
+            {
+                Console.WriteLine(tag.TagText);
+            }
         }
     }
 }

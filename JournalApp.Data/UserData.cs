@@ -21,7 +21,7 @@ namespace JournalApp.Data
 
         public IEnumerable<User> GetAll()
         {
-            throw new NotImplementedException();
+            return users.OrderBy(r => r.FirstName);
         }
 
         public User GetById(int id)
@@ -29,5 +29,9 @@ namespace JournalApp.Data
             return users.FirstOrDefault(u => u.Id == id);
         }
 
+        public User GetByType(User data)
+        {
+            return users.FirstOrDefault(r => r.FirstName == data.FirstName);
+        }
     }   
 }

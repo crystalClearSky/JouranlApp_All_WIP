@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JournalApp.Data
 {
-    public class JournalData : ITag<Journal>
+    public class JournalData : ITag<Journal>, IDataRepository<Journal>
     {
         List<Journal> journals;
         public JournalData()
@@ -25,7 +25,7 @@ namespace JournalApp.Data
                    CommentString = "Emerson is miserable with his life." +
                    "He’s constantly bullied, and his boyfriend, Matt, sides with his tormentors.",
                    Created = new DateTime(2019,9,19),
-                   Tags = new List<Tag>() 
+                   Tags = new List<Tag>()
                    {
                        new Tag(){ Id = 1, TagText = "firstbook", UserTag = user },
                        new Tag(){ Id = 2, TagText = "progress" },
@@ -47,6 +47,16 @@ namespace JournalApp.Data
             };
         }
 
+        public IEnumerable<Journal> GetAll()
+        {
+            return journals.OrderBy(j => j.Created);
+        }
+
+        public Journal GetById(int id)
+        {
+            return journals.FirstOrDefault(j => j.Id == id);
+        }
+
         public IEnumerable<Journal> GetByTag(Tag tag)
         {
             IEnumerable<Journal> result = new List<Journal>();
@@ -60,6 +70,37 @@ namespace JournalApp.Data
             }
 
             return result;
+        }
+        public void AddTag(string tagEntry = "", Journal journal = null)
+        {
+            if (!string.IsNullOrWhiteSpace(tagEntry))
+            {
+                if (tagEntry.StartsWith('#'))
+                {
+                    tagEntry = tagEntry.Trim('#');
+                    journal.Tags.Add(new Tag { TagText = tagEntry });
+                }
+                if (tagEntry.StartsWith('@'))
+                {
+                    tagEntry = tagEntry.Trim('@');
+                    IDataRepository<User> getUser = new UserData();
+                    var users = getUser.GetAll();
+                    var user = users.FirstOrDefault(u => u.FirstName.ToLower() == tagEntry);
+                    if (user == null)
+                    {
+                        Console.WriteLine("User not found!");
+                        return;
+                    }
+                    journal.Tags.Add(new Tag() { UserTag = user });
+
+                }
+            }
+            // returns user if @ or tag if #
+        }
+
+        public Journal GetByType(Journal data)
+        {
+            throw new NotImplementedException();
         }
     }
 }
