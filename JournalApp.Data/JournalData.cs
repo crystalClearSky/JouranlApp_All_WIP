@@ -86,12 +86,16 @@ namespace JournalApp.Data
                     IDataRepository<User> getUser = new UserData();
                     var users = getUser.GetAll();
                     var user = users.FirstOrDefault(u => u.FirstName.ToLower() == tagEntry);
-                    if (user == null)
+                    if (string.IsNullOrWhiteSpace(user.FirstName))
                     {
                         Console.WriteLine("User not found!");
                         return;
                     }
-                    journal.Tags.Add(new Tag() { UserTag = user });
+                    if(!string.IsNullOrWhiteSpace(user.FirstName))
+                    {
+                        journal.Tags.Add(new Tag() { UserTag = user });
+                    }
+                    
 
                 }
             }

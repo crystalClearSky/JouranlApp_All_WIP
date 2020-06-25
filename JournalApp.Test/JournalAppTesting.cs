@@ -91,7 +91,11 @@ namespace JournalApp.Test
 
             foreach (var user in journal.Tags)
             {
-                Console.WriteLine(user.UserTag.FirstName);
+                if (user.UserTag.FirstName != null)
+                {
+                    Console.WriteLine(user.UserTag.FirstName);
+                }
+                
             }
             Console.WriteLine("*****");
             foreach (var tag in journal.Tags)

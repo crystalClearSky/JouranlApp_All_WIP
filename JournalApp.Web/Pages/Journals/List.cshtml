@@ -1,25 +1,30 @@
 ﻿@page
 @model JournalApp.Web.Pages.Journals.ListModel
 @{
-    ViewData["Title"] = "List";
+    ViewData["Title"] = "Journal";
 }
 
-<h1>List</h1>
+<h1>Journal</h1>
 
 
-    @foreach (var journal in Model.Journals)
-    {
-        <div class="card" style="width: 24rem; margin: 5px;">
-            <div class="card-body">
-                <h5 class="card-title">@journal.Title</h5>
-                <p class="card-text">@journal.CommentString</p>
-                @foreach (var tag in journal.Tags)
+@foreach (var journal in Model.Journals)
+{
+    <div class="card" style="width: 18rem; margin: 3px;">
+
+        <h5 class="card-header">@journal.Title</h5>
+        <div class="card-body">
+            <p class="card-text">@journal.CommentString</p>
+            @foreach (var tag in journal.Tags)
+            {
+                <div class="d-inline p-1 bg-dark text-white">#@tag.TagText</div>
+                if (tag.UserTag.FirstName != null)
                 {
-                    <div class="d-inline p-1 bg-dark text-white">#@tag.TagText</div>
                     <div class="d-inline p-1 bg-dark text-white">@@@tag.UserTag.FirstName</div>
                 }
-            <p class="card-footer"><small class="text-muted">@journal.Created.ToShortDateString()</small></p>
-            </div>
+
+            }
         </div>
-    }
+        <div class="card-footer"><small class="text-muted">Created on: @journal.Created.ToShortDateString()</small></div>
+    </div>
+}
 
