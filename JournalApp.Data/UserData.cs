@@ -29,6 +29,11 @@ namespace JournalApp.Data
             return users.FirstOrDefault(u => u.Id == id);
         }
 
+        public IEnumerable<User> GetByName(string data)
+        {
+            throw new NotImplementedException();
+        }
+
         public User GetByType(User data)
         {
             return users.FirstOrDefault(r => r.FirstName == data.FirstName);

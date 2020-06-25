@@ -102,6 +102,12 @@ namespace JournalApp.Data
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Journal> GetByName(string data = null)
+        {
+            return journals?.Where
+                (r => string.IsNullOrWhiteSpace(data) || r.Title.ToLower().StartsWith(data)).OrderBy(r => r.Title);
+        }
     }
 }
 
