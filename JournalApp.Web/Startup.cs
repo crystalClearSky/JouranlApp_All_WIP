@@ -7,6 +7,7 @@ using JournalApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,7 +27,8 @@ namespace JournalApp.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddTransient<IDataRepository<Journal>, JournalData>();
+            services.AddScoped<IDataRepository<Journal>, JournalData>();
+            services.AddScoped<HtmlHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

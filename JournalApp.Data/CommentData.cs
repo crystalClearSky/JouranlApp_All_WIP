@@ -24,6 +24,11 @@ namespace JournalApp.Data
             throw new NotImplementedException();
         }
 
+        public IEnumerable<Comment> GetByCatergory(Category catergory, string searchTerm)
+        {
+            throw new NotImplementedException();
+        }
+
         public Comment GetById(int id)
         {
             return comments.FirstOrDefault(c => c.CommentId == id);

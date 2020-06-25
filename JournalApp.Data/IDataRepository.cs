@@ -12,5 +12,6 @@ namespace JournalApp.Data
         TData GetById(int id);
         TData GetByType(TData data);
         IEnumerable<TData> GetByName(string data);
+        IEnumerable<TData> GetByCatergory(Category catergory, string searchTerm);
     }
 }

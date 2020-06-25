@@ -103,5 +103,26 @@ namespace JournalApp.Test
                 Console.WriteLine(tag.TagText);
             }
         }
+        [Test]
+        public void GetByCategory_Test()
+        {
+            IDataRepository<Journal> db = new JournalData();
+            var category = Category.Content;
+            var result = db.GetByCatergory(category, "promise");
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.CommentString);
+            }
+        }
+        [Test]
+        public void GetByCategory_Test_User()
+        {
+            IDataRepository<Journal> db = new JournalData();
+            var category = Category.User;
+            var result = db.GetByCatergory(category, "sally");
+            foreach (var item in result)
+            {
+            }
+        }
     }
 }

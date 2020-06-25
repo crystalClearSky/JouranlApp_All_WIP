@@ -109,8 +109,36 @@ namespace JournalApp.Data
 
         public IEnumerable<Journal> GetByName(string data = null)
         {
+            //return journals?.Where
+            //    (r => string.IsNullOrWhiteSpace(data) || r.Title.ToLower().Contains(data)).OrderBy(r => r.Title);
+
             return journals?.Where
-                (r => string.IsNullOrWhiteSpace(data) || r.Title.ToLower().StartsWith(data)).OrderBy(r => r.Title);
+                (r => string.IsNullOrWhiteSpace(data) || r.Title.ToLower().Contains(data)).OrderBy(r => r.Title);
+        }
+
+        public IEnumerable<Journal> GetByCatergory(Category catergory = Category.None, string searchTerm = "")
+        {
+            IEnumerable<Journal> result = new List<Journal>();
+            switch (catergory)
+            {
+                case Category.None:
+                    break;
+                case Category.Title:
+                    result = journals.Where(j => j.Title.ToLower().Contains(searchTerm));
+                    break;
+                case Category.Content:
+                    result = journals.Where(j => j.CommentString.ToLower().Contains(searchTerm));
+                    break;
+                case Category.Tag:
+                    result = journals.Where(j => j.Tags.Any(t => t.TagText.ToLower().StartsWith(searchTerm)));
+                    break;
+                case Category.User:
+                    result = journals.Where(j => j.Tags.Any(t => t.UserTag.FirstName.ToLower().StartsWith(searchTerm)));
+                    break; // Not wroking riquires fix
+                default:
+                    break;
+            }
+            return result;
         }
     }
 }

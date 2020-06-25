@@ -24,6 +24,11 @@ namespace JournalApp.Data
             return users.OrderBy(r => r.FirstName);
         }
 
+        public IEnumerable<User> GetByCatergory(Category catergory, string searchTerm)
+        {
+            throw new NotImplementedException();
+        }
+
         public User GetById(int id)
         {
             return users.FirstOrDefault(u => u.Id == id);

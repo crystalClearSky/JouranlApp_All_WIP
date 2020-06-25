@@ -6,7 +6,15 @@
 
 <h1>Journal</h1>
 <a class="btn btn-primary" style=" margin: 3px;" asp-page="">Create New</a>
-<input class="form-control" style="width: 22rem; margin: 3px;" type="text" placeholder="Search..." />
+<form method="get">
+    <div class="form-group" style="width: 22rem; margin: 3px;">
+        <div class="input-group">
+            <input class="form-control w-80" type="search" placeholder="Search..." asp-for="SearchTerm" />
+            <select class="custom-select d-block w-20" asp-items="Model.SearchCatergory" name="catergory"></select>
+            <button class="btn btn-outline-success rounded-0" asp-item="" type="submit"><i>Search</i></button>
+        </div>
+    </div>
+</form>
 <br />
 @foreach (var journal in Model.Journals)
 {
