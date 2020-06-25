@@ -5,21 +5,22 @@
 }
 
 <h1>Journal</h1>
-
-
+<a class="btn btn-primary" style=" margin: 3px;" asp-page="">Create New</a>
+<input class="form-control" style="width: 22rem; margin: 3px;" type="text" placeholder="Search..." />
+<br />
 @foreach (var journal in Model.Journals)
 {
-    <div class="card" style="width: 18rem; margin: 3px;">
+    <div class="card" style="width: 22rem; margin: 3px;">
 
         <h5 class="card-header">@journal.Title</h5>
         <div class="card-body">
             <p class="card-text">@journal.CommentString</p>
             @foreach (var tag in journal.Tags)
             {
-                <div class="d-inline p-1 bg-dark text-white">#@tag.TagText</div>
+                <div class="d-inline p-1 bg-dark rounded text-white">#@tag.TagText</div>
                 if (tag.UserTag.FirstName != null)
                 {
-                    <div class="d-inline p-1 bg-dark text-white">@@@tag.UserTag.FirstName</div>
+                    <div class="d-inline p-1 bg-dark rounded text-white">@@@tag.UserTag.FirstName</div>
                 }
 
             }
