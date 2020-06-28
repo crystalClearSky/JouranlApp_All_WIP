@@ -31,7 +31,7 @@ namespace JournalApp.Web.Pages.Journals
             Journals = journalData.GetByName(SearchTerm);
 
             SearchCatergory = htmlHelper.GetEnumSelectList<Category>();
-            if (catergory != Category.All)
+            if (catergory != Category.Title)
             {
                 if (!string.IsNullOrEmpty(SearchTerm))
                 {

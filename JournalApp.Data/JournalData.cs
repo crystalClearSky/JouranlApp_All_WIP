@@ -113,15 +113,15 @@ namespace JournalApp.Data
                 (r => string.IsNullOrWhiteSpace(data) || r.Title.ToLower().Contains(data)).OrderBy(r => r.Title);
         }
 
-        public IEnumerable<Journal> GetByCatergory(Category catergory = Category.All, string searchTerm = "")
+        public IEnumerable<Journal> GetByCatergory(Category catergory = Category.Title, string searchTerm = "")
         {
             Person person = new Person();
             IEnumerable<Journal> result = new List<Journal>();
             switch (catergory)
             {
-                case Category.All:
-                    result = journals.OrderBy(j => j.Title);
-                    break;
+                //case Category.All:
+                //    result = journals.OrderBy(j => j.Title);
+                //    break;
                 case Category.Title:
                     result = journals.Where(j => j.Title.ToLower().Contains(searchTerm));
                     break;
@@ -142,7 +142,7 @@ namespace JournalApp.Data
                             {
                                 //Console.WriteLine("Found");
                                 person = (Person)item.Tagz[i];
-                                if (person.FirstName.StartsWith(searchTerm))
+                                if (person.FirstName.ToLower().StartsWith(searchTerm))
                                 {
                                     //Console.WriteLine("Particular user found!");
                                     result = result.Append(item);
