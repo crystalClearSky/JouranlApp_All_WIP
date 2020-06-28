@@ -5,41 +5,41 @@ using System.Linq;
 
 namespace JournalApp.Data
 {
-    public class UserData : IDataRepository<User>
+    public class UserData : IDataRepository<Person>
     {
-        List<User> users;
+        List<Person> users;
         public UserData()
         {
-            users = new List<User>()
+            users = new List<Person>()
             {
-                new User() { Id = 1, FirstName = "Sally", LastName = "Smith", DateOfBirth = new DateTime(1981,11,24), Gender = Gender.Female},
-                new User() { Id = 2, FirstName = "Jane", LastName = "Johnson", DateOfBirth = new DateTime(1964, 9, 14), Gender = Gender.Female },
-                new User() { Id = 3, FirstName = "Peter", LastName = "Soloman", DateOfBirth = new DateTime(1975,4,19), Gender = Gender.Male},
-                new User() { Id = 4, FirstName = "John", LastName = "Anderson", DateOfBirth = new DateTime(1979,12,1), Gender = Gender.Male},
+                new Person() { Id = 1, FirstName = "Sally", LastName = "Smith", DateOfBirth = new DateTime(1981,11,24), Gender = Gender.Female},
+                new Person() { Id = 2, FirstName = "Jane", LastName = "Johnson", DateOfBirth = new DateTime(1964, 9, 14), Gender = Gender.Female },
+                new Person() { Id = 3, FirstName = "Peter", LastName = "Soloman", DateOfBirth = new DateTime(1975,4,19), Gender = Gender.Male},
+                new Person() { Id = 4, FirstName = "John", LastName = "Anderson", DateOfBirth = new DateTime(1979,12,1), Gender = Gender.Male},
             };
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<Person> GetAll()
         {
             return users.OrderBy(r => r.FirstName);
         }
 
-        public IEnumerable<User> GetByCatergory(Category catergory, string searchTerm)
+        public IEnumerable<Person> GetByCatergory(Category catergory, string searchTerm)
         {
             throw new NotImplementedException();
         }
 
-        public User GetById(int id)
+        public Person GetById(int id)
         {
             return users.FirstOrDefault(u => u.Id == id);
         }
 
-        public IEnumerable<User> GetByName(string data)
+        public IEnumerable<Person> GetByName(string data)
         {
             throw new NotImplementedException();
         }
 
-        public User GetByType(User data)
+        public Person GetByType(Person data)
         {
             return users.FirstOrDefault(r => r.FirstName == data.FirstName);
         }

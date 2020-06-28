@@ -6,7 +6,7 @@ C:\Code\Projects\JournalAppProject\JournalApp.Data\bin\Debug\netcoreapp3.1\Journ
 C:\Code\Projects\JournalAppProject\JournalApp.Data\obj\Debug\netcoreapp3.1\JournalApp.Data.csprojAssemblyReference.cache
 C:\Code\Projects\JournalAppProject\JournalApp.Data\obj\Debug\netcoreapp3.1\JournalApp.Data.AssemblyInfoInputs.cache
 C:\Code\Projects\JournalAppProject\JournalApp.Data\obj\Debug\netcoreapp3.1\JournalApp.Data.AssemblyInfo.cs
-C:\Code\Projects\JournalAppProject\JournalApp.Data\obj\Debug\netcoreapp3.1\JournalApp.Data.csproj.CoreCompileInputs.cache
 C:\Code\Projects\JournalAppProject\JournalApp.Data\obj\Debug\netcoreapp3.1\JournalApp.Data.csproj.CopyComplete
 C:\Code\Projects\JournalAppProject\JournalApp.Data\obj\Debug\netcoreapp3.1\JournalApp.Data.dll
 C:\Code\Projects\JournalAppProject\JournalApp.Data\obj\Debug\netcoreapp3.1\JournalApp.Data.pdb
+C:\Code\Projects\JournalAppProject\JournalApp.Data\obj\Debug\netcoreapp3.1\JournalApp.Data.csproj.CoreCompileInputs.cache

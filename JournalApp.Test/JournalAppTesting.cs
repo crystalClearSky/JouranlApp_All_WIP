@@ -1,5 +1,6 @@
 using JournalApp.Core;
 using JournalApp.Data;
+using Microsoft.VisualBasic;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace JournalApp.Test
         [Test]
         public void GetDateType_Test()
         {
-            IDataRepository<User> uu = new UserData();
+            IDataRepository<Person> uu = new UserData();
             IDataRepository<Comment> ui = new CommentData();
             var person = uu.GetById(1);
             var comment = ui.GetById(1);
@@ -26,25 +27,25 @@ namespace JournalApp.Test
         [Test]
         public void GetByTag_Text_Test()
         {
-            
+
             // Get Tag by tag text
             ITag<Journal> uu = new JournalData();
             IDataRepository<Comment> ui = new CommentData();
             Tag tag = new Tag();
             tag.TagText = "progress";
             var journals = uu.GetByTag(tag);
-            
+
             foreach (var journal in journals)
             {
                 Console.WriteLine($"{journal.Title}");
             }
-            
+
         }
         [Test]
         public void GetByTag_User_Test()
         {
             // Get tag by user
-            IDataRepository<User> getUser = new UserData();
+            IDataRepository<Person> getUser = new UserData();
             var user = getUser.GetById(2);
             Tag tag = new Tag() { UserTag = user };
             ITag<Journal> getbytag = new JournalData();
@@ -59,7 +60,7 @@ namespace JournalApp.Test
         public void GetAllJournals_Test()
         {
             IDataRepository<Journal> retrieveJournals = new JournalData();
-            
+
             var journals = retrieveJournals.GetAll();
             foreach (var journal in journals)
             {
@@ -73,9 +74,9 @@ namespace JournalApp.Test
             IDataRepository<Journal> retrieveData = new JournalData();
             ITag<Journal> itag = new JournalData();
             var journal = retrieveData.GetById(1);
-            tag.TagText = "#Play"; 
+            tag.TagText = "#Play";
             journal.Tags.Add(tag); // Adds a tag without # or @ checks
-            itag.AddTag("#Test",journal);
+            itag.AddTag("#Test", journal);
             foreach (var item in journal.Tags)
             {
                 Console.WriteLine(item.TagText);
@@ -95,7 +96,7 @@ namespace JournalApp.Test
                 {
                     Console.WriteLine(user.UserTag.FirstName);
                 }
-                
+
             }
             Console.WriteLine("*****");
             foreach (var tag in journal.Tags)
@@ -119,10 +120,76 @@ namespace JournalApp.Test
         {
             IDataRepository<Journal> db = new JournalData();
             var category = Category.User;
-            var result = db.GetByCatergory(category, "sally");
+            var result = db.GetByCatergory(category, "Peter");
             foreach (var item in result)
             {
+                Console.WriteLine(item.Title);
             }
+        }
+        [Test]
+        public void GetByCategory_Test_Tag()
+        {
+            IDataRepository<Journal> db = new JournalData();
+            var category = Category.User;
+            var result = db.GetByCatergory(category, "Sally");
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.Title);
+            }
+        }
+        [Test]
+        public void GetByTAGZ_Test()
+        {
+            ITags<Journal> tagDB = new JournalData();
+            IDataRepository<Person> peron = new UserData();
+            var person = peron.GetById(3);
+            var result = tagDB.GetByTag(person);
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.Title);
+            }
+        }
+        [Test]
+        public void Tag_test()
+        {
+            IDataRepository<Person> retrieveUser = new UserData();
+            Comment tag = new Comment();
+            var user = retrieveUser.GetById(3);
+            tag.Tagz = new List<object> { "hi", user, "all" };
+            var reTag = tag.Tagz.Where(r => tag.Tagz.Contains("Sally"));
+            Person person = new Person();
+            foreach (var item in tag.Tagz)
+            {
+                if (item is Person)
+                {
+                    Console.WriteLine("HI");
+                    person = (Person)item;
+                }
+                Console.WriteLine(item.GetType());
+            }
+            Console.WriteLine(person.FirstName);
+        }
+        [Test]
+        public void Tag_Test_2()
+        {
+            IDataRepository<Journal> retrieveJournalDb = new JournalData();
+            var journal = retrieveJournalDb.GetById(1); // Change Journals to Posts
+            var tags = journal.Tagz;
+            foreach (var item in tags)
+            {
+                if (item is Person)
+                {
+                    Console.WriteLine(item.ToString()); ;
+                }
+            }
+        }
+        [Test]
+        public void JustTags_Test()
+        {
+            IDataRepository<Journal> retrieveJournalDb = new JournalData();
+            var journals = retrieveJournalDb.GetAll();
+            var tags = journals.Select(r => r.Tagz);
+            
         }
     }
 }

@@ -5,8 +5,8 @@ using System.Text;
 
 namespace JournalApp.Data
 {
-    public interface ILikesData
+    public interface ITags<TData>
     {
-        Person AddLike();
+        IEnumerable<TData> GetByTag(object tag);
     }
 }
