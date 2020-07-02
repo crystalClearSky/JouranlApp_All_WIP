@@ -9,7 +9,7 @@ namespace JournalApp.Data
     public interface IDataRepository<TData>
     {
         IEnumerable<TData> GetAll(); // Get all of any data
-        TData GetById(int id);
+        TData GetById(int? id);
         TData GetByType(TData data);
         IEnumerable<TData> GetByName(string data);
         IEnumerable<TData> GetByCatergory(Category catergory, string searchTerm);

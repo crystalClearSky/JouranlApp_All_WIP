@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HtmlTags;
 
 namespace JournalApp.Data
 {
@@ -12,10 +13,11 @@ namespace JournalApp.Data
         List<Comment> comments;
         public CommentData()
         {
+            
             comments = new List<Comment>()
             {
-                new Comment() { CommentId = 1, CommentString = "Facebook users love to share their opinion. The large image and four options make it fast and easy for them to understand the poll and do so."},
-                new Comment() { CommentId = 2, CommentString = " I’d definitely test a more exciting picture for this poll post, with models instead of just the shoes on a table. How about the traditional ‘lady’s-night-out shoe shot’?"},
+                new Comment() { CommentId = 1, CommentString = new ContentText("Facebook users love to share their opinion. The large image and four options make it fast and easy for them to understand the poll and do so.")},
+                new Comment() { CommentId = 2, CommentString = new ContentText(" I’d definitely test a more exciting picture for this poll post, with models instead of just the shoes on a table. How about the traditional ‘lady’s-night-out shoe shot’?")},
             };
         }
 
@@ -29,7 +31,7 @@ namespace JournalApp.Data
             throw new NotImplementedException();
         }
 
-        public Comment GetById(int id)
+        public Comment GetById(int? id)
         {
             return comments.FirstOrDefault(c => c.CommentId == id);
         }

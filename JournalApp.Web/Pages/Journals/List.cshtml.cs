@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HtmlTags;
 using JournalApp.Core;
 using JournalApp.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,7 @@ namespace JournalApp.Web.Pages.Journals
         {
             this.journalData = journalData;
             this.htmlHelper = htmlHelper;
+            // convert links in comment
         }
         public void OnGet(Category catergory)
         {
@@ -36,9 +38,11 @@ namespace JournalApp.Web.Pages.Journals
                 if (!string.IsNullOrEmpty(SearchTerm))
                 {
                     Journals = journalData.GetByCatergory(catergory, SearchTerm);
+                    
                 }
                 
             }
+            ViewData["Test"] = $"This is a <a href=\"http://www.google.com\">PLAY</a> test";
             
         }
     }

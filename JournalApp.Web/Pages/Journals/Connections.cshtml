@@ -1,0 +1,20 @@
+﻿@page "{connectionId:int}"
+@model JournalApp.Web.Pages.Journals.ConnectionsModel
+@{
+    ViewData["Title"] = "Connections";
+}
+
+<h1>Connections</h1>
+@if (Model.People != null)
+{
+    @foreach (var person in Model.People)
+    {
+        <div>@person.FullName</div>
+        <br />
+    }
+}
+else
+{
+    <p>No connections found!</p>
+}
+

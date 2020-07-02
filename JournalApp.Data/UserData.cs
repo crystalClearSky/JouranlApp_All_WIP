@@ -2,46 +2,64 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace JournalApp.Data
 {
-    public class UserData : IDataRepository<Person>
+    public class UserData : IDataRepository<User>, IUser<User>
     {
-        List<Person> users;
+        IDataRepository<Person> getPersonDb = new PersonData();
+        IDataRepository<Journal> getJournalDb = new JournalData();
+        List<User> users;
         public UserData()
         {
-            users = new List<Person>()
+            var journal2 = getJournalDb.GetById(2);
+            var person1 = getPersonDb.GetById(1);
+            var person2 = getPersonDb.GetById(2);
+            users = new List<User>()
             {
-                new Person() { Id = 1, FirstName = "Sally", LastName = "Smith", DateOfBirth = new DateTime(1981,11,24), Gender = Gender.Female},
-                new Person() { Id = 2, FirstName = "Jane", LastName = "Johnson", DateOfBirth = new DateTime(1964, 9, 14), Gender = Gender.Female },
-                new Person() { Id = 3, FirstName = "Peter", LastName = "Soloman", DateOfBirth = new DateTime(1975,4,19), Gender = Gender.Male},
-                new Person() { Id = 4, FirstName = "John", LastName = "Anderson", DateOfBirth = new DateTime(1979,12,1), Gender = Gender.Male},
+                new User() 
+                { 
+                    UserId = 1,
+                    UserName = "salGirl_01",
+                    Profile = "A highly qualified writer, a mom and a great cook.",
+                    Posts = new List<Journal> {  journal2 },
+                    Person = person1,
+                    Connections = { person2}
+                }
             };
         }
 
-        public IEnumerable<Person> GetAll()
+        public IEnumerable<User> GetAll()
         {
-            return users.OrderBy(r => r.FirstName);
+            return users.OrderBy(r => r.UserName);
         }
 
-        public IEnumerable<Person> GetByCatergory(Category catergory, string searchTerm)
+        public IEnumerable<User> GetByCatergory(Category catergory, string searchTerm)
         {
             throw new NotImplementedException();
         }
 
-        public Person GetById(int id)
+        public User GetById(int? id)
         {
-            return users.FirstOrDefault(u => u.Id == id);
+            return users.FirstOrDefault(r => r.UserId == id);
         }
 
-        public IEnumerable<Person> GetByName(string data)
+        public IEnumerable<User> GetByName(string data)
         {
             throw new NotImplementedException();
         }
 
-        public Person GetByType(Person data)
+        public User GetByPerson(Person person)
         {
-            return users.FirstOrDefault(r => r.FirstName == data.FirstName);
+            return users.FirstOrDefault(u => u.Person == person);
         }
-    }   
+
+        public User GetByType(User data)
+        {
+            throw new NotImplementedException();
+        }
+        
+    }
 }

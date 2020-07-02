@@ -91,10 +91,12 @@ C:\Code\Projects\JournalAppProject\JournalApp.Test\bin\Debug\netcoreapp3.1\Journ
 C:\Code\Projects\JournalAppProject\JournalApp.Test\obj\Debug\netcoreapp3.1\JournalApp.Test.csprojAssemblyReference.cache
 C:\Code\Projects\JournalAppProject\JournalApp.Test\obj\Debug\netcoreapp3.1\JournalApp.Test.AssemblyInfoInputs.cache
 C:\Code\Projects\JournalAppProject\JournalApp.Test\obj\Debug\netcoreapp3.1\JournalApp.Test.AssemblyInfo.cs
-C:\Code\Projects\JournalAppProject\JournalApp.Test\obj\Debug\netcoreapp3.1\JournalApp.Test.csproj.CoreCompileInputs.cache
 C:\Code\Projects\JournalAppProject\JournalApp.Test\obj\Debug\netcoreapp3.1\JournalApp.Test.csproj.CopyComplete
 C:\Code\Projects\JournalAppProject\JournalApp.Test\obj\Debug\netcoreapp3.1\JournalApp.Test.dll
 C:\Code\Projects\JournalAppProject\JournalApp.Test\obj\Debug\netcoreapp3.1\JournalApp.Test.pdb
 C:\Code\Projects\JournalAppProject\JournalApp.Test\obj\Debug\netcoreapp3.1\JournalApp.Test.genruntimeconfig.cache
 C:\Code\Projects\JournalAppProject\JournalApp.Test\bin\Debug\netcoreapp3.1\JournalApp.Data.dll
 C:\Code\Projects\JournalAppProject\JournalApp.Test\bin\Debug\netcoreapp3.1\JournalApp.Data.pdb
+C:\Code\Projects\JournalAppProject\JournalApp.Test\bin\Debug\netcoreapp3.1\HtmlTags.dll
+C:\Code\Projects\JournalAppProject\JournalApp.Test\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Code\Projects\JournalAppProject\JournalApp.Test\obj\Debug\netcoreapp3.1\JournalApp.Test.csproj.CoreCompileInputs.cache

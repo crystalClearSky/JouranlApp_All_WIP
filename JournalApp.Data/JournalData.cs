@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
@@ -14,7 +15,8 @@ namespace JournalApp.Data
         List<Journal> journals;
         public JournalData()
         {
-            IDataRepository<Person> getUser = new UserData();
+            IDataRepository<Person> getUser = new PersonData();
+            
             var user = getUser.GetById(1);
             var user1 = getUser.GetById(2);
             var user2 = getUser.GetById(3);
@@ -24,9 +26,9 @@ namespace JournalApp.Data
                 {
                    Id = 1,
                    Title = "The Best thing in life",
-                   CommentString = "Enjoying a lovely day with my besty @sally near the 'megatroncafe' in 'london'",
+                   CommentString = new ContentText("Enjoying a lovely <a href=\"http://www.google.com\">My link</a> day with my besty @sally near the 'megatroncafe' in 'london'", new List<Person>() { user, user1 }  ),
                    Created = new DateTime(2019,9,19),
-                   Tagz = new List<object>() { "gamer", "zbrush", user, "drawing", user1, }
+                   Tagz = new List<object>() { "gamer", "zbrush", user, "drawing", user1, "water" }
                    
                    //Tags = new List<Tag>()
                    //{
@@ -39,9 +41,10 @@ namespace JournalApp.Data
                 {
                    Id = 2,
                    Title = "My Person Zbrush work",
-                   CommentString = "As promised, full turnaround video of my Arcanist model. Wings aren’t coloured" +
-                   " correctly but that’s what you get when you don’t uv map",
+                   CommentString = new ContentText("As promised, full turnaround video of my Arcanist model. Wings aren’t coloured" +
+                   " correctly but that’s what you get when you don’t uv map"),
                    Created = new DateTime(2019,5,11),
+                   Creator = user,
                    Tagz = new List<object>() { "music", "water", user2, "adventure" }
                 }
             };
@@ -52,7 +55,7 @@ namespace JournalApp.Data
             return journals.OrderBy(j => j.Created);
         }
 
-        public Journal GetById(int id)
+        public Journal GetById(int? id)
         {
             return journals.FirstOrDefault(j => j.Id == id);
         }
@@ -82,7 +85,7 @@ namespace JournalApp.Data
                 if (tagEntry.StartsWith('@'))
                 {
                     tagEntry = tagEntry.Trim('@');
-                    IDataRepository<Person> getUser = new UserData();
+                    IDataRepository<Person> getUser = new PersonData();
                     var users = getUser.GetAll();
                     var user = users.FirstOrDefault(u => u.FirstName.ToLower() == tagEntry);
                     if (string.IsNullOrWhiteSpace(user.FirstName))
@@ -126,7 +129,7 @@ namespace JournalApp.Data
                     result = journals.Where(j => j.Title.ToLower().Contains(searchTerm));
                     break;
                 case Category.Content:
-                    result = journals.Where(j => j.CommentString.ToLower().Contains(searchTerm));
+                    result = journals.Where(j => j.CommentString.ContentString.ToLower().Contains(searchTerm));
                     break;
                 case Category.Tag:
                     result = journals.Where(r => r.Tagz.Contains(searchTerm));
@@ -142,11 +145,12 @@ namespace JournalApp.Data
                             {
                                 //Console.WriteLine("Found");
                                 person = (Person)item.Tagz[i];
-                                if (person.FirstName.ToLower().StartsWith(searchTerm))
+                                if (person.ToString().ToLower().Contains(searchTerm.ToLower()))
                                 {
                                     //Console.WriteLine("Particular user found!");
                                     result = result.Append(item);
                                 }
+                                
                                 //persons.Add((Person)item.Tagz[i]);
                                 //if true then result.add ( this item )
                             }
@@ -187,53 +191,15 @@ namespace JournalApp.Data
                     {
                         if (item.Tagz[i] is Person)
                         {
-                            //Console.WriteLine("Found");
                             person = (Person)item.Tagz[i];
                             if (person.FirstName == tags.FirstName)
                             {
                                 results.Add(item);
                             }
-                            //persons.Add((Person)item.Tagz[i]);
-                            //if true then result.add ( this item )
                         }
-
                     }
                 }
             }
-
-                //var e = journals.Select(r => r.Tagz.ToList());
-                //foreach (var items in e)
-                //{
-                //    foreach (var item in items)
-                //    {
-                //        if (item is Person)
-                //        {
-                //            compare = (Person)item;
-                //            if (compare.FirstName == tags.FirstName)
-                //            {
-                //                Console.WriteLine("Found");
-                //                leave = true;
-                //                break;
-                //            }
-                //            if (leave) break;
-                //        }
-                //        if (leave) break;
-                //    }
-                //    if (leave)
-                //    {
-                //        var toAdd = GetById(count);
-                //        if (!results.Contains(toAdd))
-                //        {
-                //            results.Add(toAdd);
-                //        }
-
-                //    }
-                //    else
-                //    {
-                //        count++;
-                //    }
-                //}
-            
             else
             {
                 results = journals.FindAll(r => r.Tagz.Contains(tag));
@@ -242,6 +208,8 @@ namespace JournalApp.Data
             
             return results;
         }
+        
+        
     }
 }
 

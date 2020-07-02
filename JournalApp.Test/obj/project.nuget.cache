@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "tvIbN5O2+KlN2EznVMB9lnAInF7ap8ElQr9jo/hCkTzLugjtkE7uzt8d0Bw761ZImGkbH3Td/aR08gDOlZwfGw==",
+  "dgSpecHash": "65CWiAst+lug1u5K9nBPerx+EyGD45l0iPcILDSXdAnn7MI6lIDRi8a4GzJqIj4ir2E8wbChjBs5caGA5r1vxQ==",
   "success": true,
   "projectFilePath": "C:\\Code\\Projects\\JournalAppProject\\JournalApp.Test\\JournalApp.Test.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Justice\\.nuget\\packages\\htmltags\\8.0.0\\htmltags.8.0.0.nupkg.sha512",
     "C:\\Users\\Justice\\.nuget\\packages\\microsoft.codecoverage\\16.4.0\\microsoft.codecoverage.16.4.0.nupkg.sha512",
     "C:\\Users\\Justice\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\Justice\\.nuget\\packages\\microsoft.dotnet.internalabstractions\\1.0.0\\microsoft.dotnet.internalabstractions.1.0.0.nupkg.sha512",
+    "C:\\Users\\Justice\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\3.0.0\\microsoft.dotnet.platformabstractions.3.0.0.nupkg.sha512",
     "C:\\Users\\Justice\\.nuget\\packages\\microsoft.net.test.sdk\\16.4.0\\microsoft.net.test.sdk.16.4.0.nupkg.sha512",
     "C:\\Users\\Justice\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Justice\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
@@ -56,6 +58,7 @@
     "C:\\Users\\Justice\\.nuget\\packages\\system.runtime.serialization.primitives\\4.1.1\\system.runtime.serialization.primitives.4.1.1.nupkg.sha512",
     "C:\\Users\\Justice\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\Justice\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\Justice\\.nuget\\packages\\system.text.json\\4.6.0\\system.text.json.4.6.0.nupkg.sha512",
     "C:\\Users\\Justice\\.nuget\\packages\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
     "C:\\Users\\Justice\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\Justice\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",

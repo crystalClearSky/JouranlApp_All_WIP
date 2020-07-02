@@ -4,44 +4,69 @@
     ViewData["Title"] = "Journal";
 }
 
+@*@section Scripts {
+        <script type="text/javascript" scr="~/scripts/main.js">
+            $(document).ready(function () {
+                $("#mySearch").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myList p").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+    }*@
+
 <h1>Journal</h1>
-<a class="btn btn-primary" style=" margin: 3px;" asp-page="">Create New</a>
+
 <form method="get">
+
     <div class="form-group" style="width: 22rem; margin: 3px;">
+        <a class="btn btn-primary float-right" style=" margin-bottom: 8px;" asp-page="">Create New</a>
         <div class="input-group">
-            <input class="form-control w-80" type="search" placeholder="Search..." asp-for="SearchTerm" />
+            <input id="mySearch" class="form-control w-80" type="search" placeholder="Search..." asp-for="SearchTerm" />
             <select class="custom-select d-block w-20" asp-items="Model.SearchCatergory" name="catergory"></select>
-            <button class="btn btn-outline-success rounded-0" asp-item="" type="submit">Search</button>
+            <button class="btn btn-outline-success rounded-0" asp-item="" type="submit"><i class="fa fa-search"></i></button>
         </div>
     </div>
+
+    <br />
+
+    @foreach (var journal in Model.Journals)
+    {
+        <div id="myList" class="card" style="width: 22rem; margin: 3px; margin-bottom: 16px;">
+
+            <div class="card-header">
+                <h5>@journal.Title</h5>
+                <p class="text-muted">Written by:<a asp-page="./UserPage" asp-route-userId="@journal.Creator.Id">@journal.Creator.FullName</a></p>
+
+            </div>
+            <div class="card-body">
+                <p class="card-text">@Html.Raw(journal.CommentString.ContentString) <a asp-page="">Test</a></p>
+
+                @foreach (var tag in journal.Tagz)
+                {
+                    @if (tag is JournalApp.Core.Person)
+                    {
+                        var person = (JournalApp.Core.Person)tag;
+                        <a asp-page="./UserPage" class="d-inline p-1 bg-primary rounded text-white" asp-route-userId="@person.Id">@tag </a>
+
+                    }
+                    else
+                    {
+                        <a href="./List?SearchTerm=@tag&catergory=2" class="d-inline p-1 bg-dark rounded text-white">@tag</a>
+                    }
+                }
+
+            </div>
+            <div class="card-footer"><small class="text-muted">Created on: @journal.Created.ToShortDateString()</small></div>
+        </div>
+
+    }
 </form>
-<br />
-@foreach (var journal in Model.Journals)
-{
-    <div class="card" style="width: 22rem; margin: 3px; margin-bottom: 16px;">
-
-        <h5 class="card-header">@journal.Title</h5>
-        <div class="card-body">
-            <p class="card-text">@journal.CommentString</p>
-            @foreach (var tag in journal.Tagz)
-            {
-                @if (tag is JournalApp.Core.Person)
-                {
-                    <div class="d-inline p-1 bg-primary rounded text-white">@@@tag </div>
-                    
-                }
-                else
-                {
-                    <div class="d-inline p-1 bg-dark rounded text-white">#@tag</div>
-                }
-
-
-
-
-
-            }
-        </div>
-        <div class="card-footer"><small class="text-muted">Created on: @journal.Created.ToShortDateString()</small></div>
-    </div>
+@{
+    string msg1 = "My Text <a href=\"http://www.google.com\">My link</a>. Hi Hi Hi";
+    @Html.Raw(msg1)
 }
+<p>@Html.Raw(ViewData["Test"])</p>
 

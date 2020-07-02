@@ -1,0 +1,70 @@
+﻿@page "{userId:int}"
+@model JournalApp.Web.Pages.Journals.UserPageModel
+@{
+    ViewData["Title"] = "UserPage";
+}
+@*@section Scripts {
+    <script type="text/javascript" scr="~/scripts/main.js">
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
+    }*@
+
+
+
+
+
+
+
+<div class="card profile-card-1">
+
+    <h2>@Model?.ThisUser?.Person?.FullName</h2>
+
+    <p class="card-title">@Model?.ThisUser?.Profile</p>
+
+    <div>Username: @Model?.ThisUser?.UserName</div>
+
+    @*<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>*@
+
+    <a href="#"><i class="fa fa-dribbble"></i></a>
+
+    <div><a asp-page=".\Connections" asp-route-connectionId="@Model?.ThisUser?.Person?.Id">Connections: </a><span class="badge badge-primary badge-pill">@Model?.ThisUser?.Connections?.Count()</span></div>
+    <a asp-page=".\Edit">Create Journal</a>
+</div>
+
+@foreach (var journal in Model.ThisUser.Posts)
+{
+    <div id="myList" class="card" style="width: 22rem; margin: 3px; margin-bottom: 16px;">
+
+        <div class="card-header">
+            <h5>@journal.Title</h5>
+
+        </div>
+        <div class="card-body">
+            <p class="card-text">@Html.Raw(journal.CommentString.ContentString) <a asp-page="">Test</a></p>
+
+            @foreach (var tag in journal.Tagz)
+            {
+                @if (tag is JournalApp.Core.Person)
+                {
+                    var person = (JournalApp.Core.Person)tag;
+                    <a asp-page="./UserPage" class="d-inline p-1 bg-primary rounded text-white" asp-route-userId="@person.Id">@tag </a>
+
+                }
+                else
+                {
+                    <a href="./List?SearchTerm=@tag&catergory=2" class="d-inline p-1 bg-dark rounded text-white">@tag</a>
+                }
+            }
+
+        </div>
+        <div class="card-footer">
+        <small class="text-muted">Created on: @journal.Created.ToShortDateString()</small>
+            <a class="float-right" asp-page="./Edit" asp-route-userId="@journal.Id">Edit Post</a>
+        </div>
+    </div>
+
+}
+
+

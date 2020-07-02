@@ -28,6 +28,7 @@ namespace JournalApp.Web
         {
             services.AddRazorPages();
             services.AddScoped<IDataRepository<Journal>, JournalData>();
+            services.AddScoped<IDataRepository<User>, UserData>();
             services.AddScoped<HtmlHelper>();
         }
 

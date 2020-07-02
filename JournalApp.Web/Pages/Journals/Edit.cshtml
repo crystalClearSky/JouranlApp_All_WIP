@@ -1,0 +1,18 @@
+﻿@page "{userId:int?}"
+@model JournalApp.Web.Pages.Journals.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editing Post</h1>
+
+<form style="width: 22rem;" method="post">
+    <input type="hidden" asp-for="Journal.Id" />
+    <div class="form-group">
+        <label asp-for="Journal.Title"></label>
+        <input asp-for="Journal.Title" class="form-control" />
+    </div>
+
+
+</form>
+
