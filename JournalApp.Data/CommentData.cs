@@ -8,40 +8,40 @@ using HtmlTags;
 
 namespace JournalApp.Data
 {
-    public class CommentData : IDataRepository<Comment>
+    public class CommentData : IDataRepository<Content>
     {
-        List<Comment> comments;
+        List<Content> comments;
         public CommentData()
         {
             
-            comments = new List<Comment>()
+            comments = new List<Content>()
             {
-                new Comment() { CommentId = 1, CommentString = new ContentText("Facebook users love to share their opinion. The large image and four options make it fast and easy for them to understand the poll and do so.")},
-                new Comment() { CommentId = 2, CommentString = new ContentText(" I’d definitely test a more exciting picture for this poll post, with models instead of just the shoes on a table. How about the traditional ‘lady’s-night-out shoe shot’?")},
+                new Content() { CommentId = 1, Journey = new ContentText("Facebook users love to share their opinion. The large image and four options make it fast and easy for them to understand the poll and do so.")},
+                new Content() { CommentId = 2, Journey = new ContentText(" I’d definitely test a more exciting picture for this poll post, with models instead of just the shoes on a table. How about the traditional ‘lady’s-night-out shoe shot’?")},
             };
         }
 
-        public IEnumerable<Comment> GetAll()
+        public IEnumerable<Content> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Comment> GetByCatergory(Category catergory, string searchTerm)
+        public IEnumerable<Content> GetByCatergory(Category catergory, string searchTerm)
         {
             throw new NotImplementedException();
         }
 
-        public Comment GetById(int? id)
+        public Content GetById(int? id)
         {
             return comments.FirstOrDefault(c => c.CommentId == id);
         }
 
-        public IEnumerable<Comment> GetByName(string data)
+        public IEnumerable<Content> GetByName(string data)
         {
             throw new NotImplementedException();
         }
 
-        public Comment GetByType(Comment data)
+        public Content GetByType(Content data)
         {
             throw new NotImplementedException();
         }

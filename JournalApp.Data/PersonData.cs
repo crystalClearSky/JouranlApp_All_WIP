@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace JournalApp.Data
 {
@@ -47,6 +48,26 @@ namespace JournalApp.Data
         public Person GetUnitByName(string unit)
         {
             return users.FirstOrDefault(u => u.FirstName.ToLower().StartsWith(unit));
+        }
+        public IEnumerable<Journal> GetUserPosts(int id)
+        {
+            IDataRepository<Journal> jDb = new JournalData();
+            var journals = jDb.GetAll();
+
+            //var thisUsersJournals = from user in users
+            //                        join journal in journals on user.Id equals journal.AuthorId
+            //                        orderby journal.Created
+            //                        select new
+            //                        {
+            //                            journal.Title,
+            //                            journal.Journey.ContentString,
+            //                            user.FullName,
+            //                        };
+
+
+
+            var selectJournal = journals.Where(j => j.AuthorId == id);
+            return selectJournal;
         }
     }   
 }

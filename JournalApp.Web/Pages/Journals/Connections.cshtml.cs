@@ -19,8 +19,8 @@ namespace JournalApp.Web.Pages.Journals
         }
         public void OnGet(int connectionId)
         {
-            var userss = userDb.GetById(connectionId);
-            People = userss.Connections;
+            var users = userDb.GetById(connectionId);
+            People = users.Connections;
         }
     }
 }

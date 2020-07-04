@@ -17,6 +17,8 @@
         </script>
     }*@
 
+
+
 <h1>Journal</h1>
 
 <form method="get">
@@ -24,8 +26,8 @@
     <div class="form-group" style="width: 22rem; margin: 3px;">
         <a class="btn btn-primary float-right" style=" margin-bottom: 8px;" asp-page="">Create New</a>
         <div class="input-group">
-            <input id="mySearch" class="form-control w-80" type="search" placeholder="Search..." asp-for="SearchTerm" />
-            <select class="custom-select d-block w-20" asp-items="Model.SearchCatergory" name="catergory"></select>
+            <input id="mySearch" class="form-control col-md-8" type="search" placeholder="Search..." asp-for="SearchTerm" />
+            <select class="custom-select col-md-4" asp-items="Model.SearchCatergory" name="catergory"></select>
             <button class="btn btn-outline-success rounded-0" asp-item="" type="submit"><i class="fa fa-search"></i></button>
         </div>
     </div>
@@ -42,7 +44,7 @@
 
             </div>
             <div class="card-body">
-                <p class="card-text">@Html.Raw(journal.CommentString.ContentString) <a asp-page="">Test</a></p>
+                <p class="card-text">@Html.Raw(journal.Journey.ContentString) <a asp-page="">Test</a></p>
 
                 @foreach (var tag in journal.Tagz)
                 {

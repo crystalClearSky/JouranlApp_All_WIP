@@ -26,10 +26,10 @@ namespace JournalApp.Test
         public void GetDateType_Test()
         {
             IDataRepository<Person> uu = new PersonData();
-            IDataRepository<Comment> ui = new CommentData();
+            IDataRepository<Content> ui = new CommentData();
             var person = uu.GetById(1);
             var comment = ui.GetById(1);
-            Console.WriteLine($"{person.FirstName}\n{comment.CommentString}");
+            Console.WriteLine($"{person.FirstName}\n{comment.Journey}");
         }
         [Test]
         public void GetByTag_Text_Test()
@@ -37,7 +37,7 @@ namespace JournalApp.Test
 
             // Get Tag by tag text
             ITag<Journal> uu = new JournalData();
-            IDataRepository<Comment> ui = new CommentData();
+            IDataRepository<Content> ui = new CommentData();
             Tag tag = new Tag();
             tag.TagText = "progress";
             var journals = uu.GetByTag(tag);
@@ -119,7 +119,7 @@ namespace JournalApp.Test
             var result = db.GetByCatergory(category, "promise");
             foreach (var item in result)
             {
-                Console.WriteLine(item.CommentString);
+                Console.WriteLine(item.Journey);
             }
         }
         [Test]
@@ -160,7 +160,7 @@ namespace JournalApp.Test
         public void Tag_test()
         {
             IDataRepository<Person> retrieveUser = new PersonData();
-            Comment tag = new Comment();
+            Content tag = new Content();
             var user = retrieveUser.GetById(3);
             tag.Tagz = new List<object> { "hi", user, "all" };
             var reTag = tag.Tagz.Where(r => tag.Tagz.Contains("Sally"));
@@ -215,7 +215,7 @@ namespace JournalApp.Test
             //    Console.WriteLine(journal.CommentString);
             //}
 
-            string[] words = journal.CommentString.ContentString.Split(' ');
+            string[] words = journal.Journey.ContentString.Split(' ');
             for (int i = 0; i < words.Count(); i++)
             {
                 if (words[i].Contains("@"))
@@ -224,12 +224,12 @@ namespace JournalApp.Test
                     string pattern = "\\b" + $"{words[i]}" + "\\b";
                     user = userdb.GetUnitByName(words[i]);
                     string replace = $"{user}";
-                    journal.CommentString.ContentString = Regex.Replace(journal.CommentString.ContentString.Replace("@", ""), pattern, replace, RegexOptions.IgnoreCase);
+                    journal.Journey.ContentString = Regex.Replace(journal.Journey.ContentString.Replace("@", ""), pattern, replace, RegexOptions.IgnoreCase);
                 }
             }
             Object t = new object();
             t = "gfgf" + user + "xcv";
-            Console.WriteLine(journal.CommentString);
+            Console.WriteLine(journal.Journey);
         }
         [Test]
         public void CommentObject_Test()
@@ -249,7 +249,7 @@ namespace JournalApp.Test
             IDataRepository<Person> userDB = new PersonData();
             var person = userDB.GetById(1);
             Journal journal = new Journal();
-            journal.CommentString = new ContentText("Hi all this is @sally",new List<Person> { person });
+            journal.Journey = new ContentText("Hi all this is @sally",new List<Person> { person });
         }
         [Test]
         public void GetCreatorOfJournal()
@@ -260,6 +260,26 @@ namespace JournalApp.Test
 
             Console.WriteLine(user.FullName);
 
+        }
+        [Test]
+        public void GetUserPosts_Test()
+        {
+            IPerson<Person> pDB = new PersonData();
+            var userJournals = pDB.GetUserPosts(1);
+            foreach (var item in userJournals)
+            {
+                Console.WriteLine(item.Title);
+                //if (item is Person)
+                //{
+                //    var i = (Person)item;
+                //    Console.WriteLine(i.FirstName);
+                //}
+                //if (item is Journal)
+                //{
+                //    var i = (Journal)item;
+                //    Console.WriteLine(i.Title);
+                //}
+            }
         }
     }
 }

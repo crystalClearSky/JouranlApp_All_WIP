@@ -24,9 +24,10 @@ namespace JournalApp.Data
             {
                 new Journal()
                 {
+                    AuthorId = 2,
                    Id = 1,
                    Title = "The Best thing in life",
-                   CommentString = new ContentText("Enjoying a lovely <a href=\"http://www.google.com\">My link</a> day with my besty @sally near the 'megatroncafe' in 'london'", new List<Person>() { user, user1 }  ),
+                   Journey = new ContentText("Enjoying a lovely <a href=\"http://www.google.com\">My link</a> day with my besty @sally near the 'megatroncafe' in 'london'", new List<Person>() { user, user1 }  ),
                    Created = new DateTime(2019,9,19),
                    Tagz = new List<object>() { "gamer", "zbrush", user, "drawing", user1, "water" }
                    
@@ -39,9 +40,10 @@ namespace JournalApp.Data
                 },
                 new Journal()
                 {
+                    AuthorId = 1,
                    Id = 2,
                    Title = "My Person Zbrush work",
-                   CommentString = new ContentText("As promised, full turnaround video of my Arcanist model. Wings aren’t coloured" +
+                   Journey = new ContentText("As promised, full turnaround video of my Arcanist model. Wings aren’t coloured" +
                    " correctly but that’s what you get when you don’t uv map"),
                    Created = new DateTime(2019,5,11),
                    Creator = user,
@@ -129,7 +131,7 @@ namespace JournalApp.Data
                     result = journals.Where(j => j.Title.ToLower().Contains(searchTerm));
                     break;
                 case Category.Content:
-                    result = journals.Where(j => j.CommentString.ContentString.ToLower().Contains(searchTerm));
+                    result = journals.Where(j => j.Journey.ContentString.ToLower().Contains(searchTerm));
                     break;
                 case Category.Tag:
                     result = journals.Where(r => r.Tagz.Contains(searchTerm));
@@ -208,6 +210,7 @@ namespace JournalApp.Data
             
             return results;
         }
+         
         
         
     }
