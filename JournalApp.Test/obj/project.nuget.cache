@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "65CWiAst+lug1u5K9nBPerx+EyGD45l0iPcILDSXdAnn7MI6lIDRi8a4GzJqIj4ir2E8wbChjBs5caGA5r1vxQ==",
+  "dgSpecHash": "7XJLYpO+RIi+nyw9S32/V3XN8Bln7gESD/T8IX+8PSQawqEeB/WtP5qVIAfPrtm2IDggUXKrNGPujdrmnjc57g==",
   "success": true,
   "projectFilePath": "C:\\Code\\Projects\\JournalAppProject\\JournalApp.Test\\JournalApp.Test.csproj",
   "expectedPackageFiles": [
@@ -69,8 +69,7 @@
     "C:\\Users\\Justice\\.nuget\\packages\\system.xml.xdocument\\4.0.11\\system.xml.xdocument.4.0.11.nupkg.sha512",
     "C:\\Users\\Justice\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Justice\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
-    "C:\\Users\\Justice\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Justice\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+    "C:\\Users\\Justice\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

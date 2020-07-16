@@ -40,7 +40,7 @@
 
             <div class="card-header">
                 <h5>@journal.Title</h5>
-                <p class="text-muted">Written by:<a asp-page="./UserPage" asp-route-userId="@journal.Creator.Id">@journal.Creator.FullName</a></p>
+                <p class="text-muted">Written by:<a asp-page="./UserPage" asp-route-userId="@journal.Creator.Person_Id">@journal.Creator.FullName</a></p>
 
             </div>
             <div class="card-body">
@@ -51,7 +51,7 @@
                     @if (tag is JournalApp.Core.Person)
                     {
                         var person = (JournalApp.Core.Person)tag;
-                        <a asp-page="./UserPage" class="d-inline p-1 bg-primary rounded text-white" asp-route-userId="@person.Id">@tag </a>
+                        <a asp-page="./UserPage" class="d-inline p-1 bg-primary rounded text-white" asp-route-userId="@person.Person_Id">@tag </a>
 
                     }
                     else

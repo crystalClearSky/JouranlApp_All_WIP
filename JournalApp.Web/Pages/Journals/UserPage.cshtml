@@ -19,6 +19,7 @@
         margin: 10px;
         min-width: 230px;
         max-width: 415px;
+        max-height: 900px;
         width: 100%;
         color: #ffffff;
         text-align: left;
@@ -144,17 +145,24 @@
             vertical-align: auto;
             float: right;
         }
+        .crystal .card-body {
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .crystal .card-header h5 {
+            max-width: 70%;
+        }
 </style>
 
 
 
 <figure class="crystal">
-    <img src="https://66.media.tumblr.com/tumblr_m54j1nIYN21r0k830o1_500.jpg" class="background" alt="sample87" />
+    <img src="@Model.Journal.ProfileBackgroundImageUrl" class="background" alt="sample87" />
     <figcaption>
-        <img src="https://data.whicdn.com/images/56794279/original.jpg" alt="profile-sample4" class="profile" />
+        <img src="@Model.Journal.ProfileImageUrl" alt="profile-sample4" class="profile" />
         <h2>@Model?.ThisUser?.Person?.FullName<span>Username: @Model?.ThisUser?.UserName</span></h2>
         <p>@Model?.ThisUser?.Profile</p>
-        <a asp-page=".\Connections" asp-route-connectionId="@Model?.ThisUser?.Person?.Id">Connections: <span class="badge badge-primary badge-pill shadow">@Model?.ThisUser?.Connections?.Count()</span></a>
+        <a asp-page=".\Connections" asp-route-connectionId="@Model?.ThisUser?.Person?.Person_Id">Connections: <span class="badge badge-primary badge-pill shadow">@Model?.ThisUser?.Connections?.Count()</span></a>
         <a class="connections" asp-page=".\Edit">Create Journal</a>
 
 
@@ -164,7 +172,7 @@
 
                 <div class="card-header">
                     <h5>@journal.Title</h5>
-                    <a class="icon" asp-page="./Edit" asp-route-userId="@journal.Id"><i class="fa fa-edit fa-lg"></i></a>
+                    <a class="icon" asp-page="./Edit" asp-route-userId="@journal.Journal_Id"><i class="fa fa-edit fa-lg"></i></a>
                 </div>
                 <div class="card-body">
                     <p1 class="card-text">@Html.Raw(journal.Journey.ContentString) <a id="i" asp-page="">Test</a></p1>
@@ -175,7 +183,7 @@
                         @if (tag is JournalApp.Core.Person)
                         {
                             var person = (JournalApp.Core.Person)tag;
-                            <a id="tag" asp-page="./UserPage" class="d-inline p-1 bg-primary rounded text-white" asp-route-userId="@person.Id">@tag </a>
+                            <a id="tag" asp-page="./UserPage" class="d-inline p-1 bg-primary rounded text-white" asp-route-userId="@person.Person_Id">@tag </a>
 
                         }
                         else

@@ -24,8 +24,10 @@ namespace JournalApp.Data
             {
                 new Journal()
                 {
-                    AuthorId = 2,
-                   Id = 1,
+                   AuthorId = 2,
+                   ProfileImageUrl = "https://data.whicdn.com/images/56794279/original.jpg",
+                   ProfileBackgroundImageUrl = "https://66.media.tumblr.com/tumblr_m54j1nIYN21r0k830o1_500.jpg",
+                   Journal_Id = 1,
                    Title = "The Best thing in life",
                    Journey = new ContentText("Enjoying a lovely <a href=\"http://www.google.com\">My link</a> day with my besty @sally near the 'megatroncafe' in 'london'", new List<Person>() { user, user1 }  ),
                    Created = new DateTime(2019,9,19),
@@ -40,14 +42,25 @@ namespace JournalApp.Data
                 },
                 new Journal()
                 {
-                    AuthorId = 1,
-                   Id = 2,
+                   AuthorId = 1,
+                   Journal_Id = 2,
                    Title = "My Person Zbrush work",
                    Journey = new ContentText("As promised, full turnaround video of my Arcanist model. Wings aren’t coloured" +
                    " correctly but that’s what you get when you don’t uv map"),
                    Created = new DateTime(2019,5,11),
                    Creator = user,
                    Tagz = new List<object>() { "music", "water", user2, "adventure" }
+                },
+                new Journal()
+                {
+                   AuthorId = 1,
+                   Journal_Id = 3,
+                   Title = "This is the new Playstation 5",
+                   Journey = new ContentText("If you love gaming especially, highend games," +
+                   " then you'll be happy to know that the introduction of the new Playstation 5 is expected to blow all records."),
+                   Created = new DateTime(2020,8,19),
+                   Creator = user,
+                   Tagz = new List<object>() { "play", "games", user1, "graphics" }
                 }
             };
         }
@@ -59,7 +72,7 @@ namespace JournalApp.Data
 
         public Journal GetById(int? id)
         {
-            return journals.FirstOrDefault(j => j.Id == id);
+            return journals.FirstOrDefault(j => j.Journal_Id == id);
         }
 
         public IEnumerable<Journal> GetByTag(Tag tag)

@@ -15,16 +15,17 @@ namespace JournalApp.Data
         public UserData()
         {
             var journal2 = getJournalDb.GetById(2);
+            var journal3 = getJournalDb.GetById(3);
             var person1 = getPersonDb.GetById(1);
             var person2 = getPersonDb.GetById(2);
             users = new List<User>()
             {
                 new User() 
                 { 
-                    UserId = 1,
+                    User_Id = 1,
                     UserName = "salGirl_01",
                     Profile = "A highly qualified writer, a mom and a great cook.",
-                    Posts = new List<Journal> {  journal2 },
+                    Posts = new List<Journal> {  journal2, journal3 },
                     Person = person1,
                     Connections = { person2}
                 }
@@ -43,7 +44,7 @@ namespace JournalApp.Data
 
         public User GetById(int? id)
         {
-            return users.FirstOrDefault(r => r.UserId == id);
+            return users.FirstOrDefault(r => r.User_Id == id);
         }
 
         public IEnumerable<User> GetByName(string data)
