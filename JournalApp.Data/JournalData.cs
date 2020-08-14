@@ -20,6 +20,7 @@ namespace JournalApp.Data
             var user = getUser.GetById(1);
             var user1 = getUser.GetById(2);
             var user2 = getUser.GetById(3);
+
             journals = new List<Journal>()
             {
                 new Journal()

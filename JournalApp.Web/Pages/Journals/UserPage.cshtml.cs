@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using JournalApp.Core;
@@ -26,8 +27,42 @@ namespace JournalApp.Web.Pages.Journals
         }
         public void OnGet(int userId)
         {
-            ThisUser = userData.GetById(userId);
-            Journal = journalDb.GetById(userId);
+            
+            var user = userData.GetById(userId);
+            if (user != null)
+            {
+                ThisUser = user;
+            }
+            else
+            {
+                ThisUser = new User()
+                {
+                    FirstName = "",
+                    LastName = "",
+                    Connections = new List<Person>(),
+                    Person_Id = 0,
+                    Gender = Gender.Unknown,
+                    UserName = "",
+                    Posts = new List<Journal>()
+                };
+            }
+            
+            var journal = journalDb.GetById(userId);
+            if (journal != null)
+            {
+                Journal = journal;
+            }
+            else
+            {
+                Journal = new Journal()
+                {
+                    AuthorId = 0,
+                    Comment_Id = 0,
+                    Created = DateTime.Now,
+                    Journey = new ContentText(""),
+                    
+                };
+            }
         }
     }
 }

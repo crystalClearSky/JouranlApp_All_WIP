@@ -1,0 +1,79 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "JournalApp.Data/1.0.0": {
+        "dependencies": {
+          "HtmlTags": "8.0.0",
+          "JournalApp.Core": "1.0.0"
+        },
+        "runtime": {
+          "JournalApp.Data.dll": {}
+        }
+      },
+      "HtmlTags/8.0.0": {
+        "dependencies": {
+          "Microsoft.DotNet.PlatformAbstractions": "3.0.0",
+          "System.Text.Json": "4.6.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/HtmlTags.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.0.0"
+          }
+        }
+      },
+      "Microsoft.DotNet.PlatformAbstractions/3.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.19.46305"
+          }
+        }
+      },
+      "System.Text.Json/4.6.0": {},
+      "JournalApp.Core/1.0.0": {
+        "runtime": {
+          "JournalApp.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "JournalApp.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HtmlTags/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sqHu5ec5g3fZm2vXCbIeD/BMRwJkeH4hNMfYTHB50Ma/IBbuDz0oE3HndUnX2429bQvVDlz0L5bfLgFT91KZxA==",
+      "path": "htmltags/8.0.0",
+      "hashPath": "htmltags.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.DotNet.PlatformAbstractions/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vNXBo/KzMer6lP6HBrPcM8mH57b/onaUPFwCcNTGCsuzvsRlWTYE/Cc04K6mdRxZSxLz3jtdli5vEkeuM/jjRA==",
+      "path": "microsoft.dotnet.platformabstractions/3.0.0",
+      "hashPath": "microsoft.dotnet.platformabstractions.3.0.0.nupkg.sha512"
+    },
+    "System.Text.Json/4.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4F8Xe+JIkVoDJ8hDAZ7HqLkjctN/6WItJIzQaifBwClC7wmoLSda/Sv2i6i1kycqDb3hWF4JCVbpAweyOKHEUA==",
+      "path": "system.text.json/4.6.0",
+      "hashPath": "system.text.json.4.6.0.nupkg.sha512"
+    },
+    "JournalApp.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
